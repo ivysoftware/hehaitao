@@ -1,5 +1,6 @@
 /*E11*/
 #include <iostream>
+#include <stack>
 using namespace std;
 struct BSTNode
 {
@@ -28,10 +29,39 @@ bool Mirror_Recur(BSTNode* root)
 }
 bool Mirror_Iter(BSTNode* root)
 {
+	if(root == NULL)
+		return false;
+	BSTNode* temp;
+	stack<BSTNode*> nstack;
+	nstack.push(root);
 	while(1)
 	{
+		if(nstack.empty() == true)
+			break;
+		temp = nstack.top();
+		nstack.pop();
+
+
+		BSTNode* temp2 = temp->m_pLeft;
+		temp->m_pLeft = temp->m_pRight;
+		temp->m_pRight = temp2;			
+
+		if(temp->m_pLeft)
+			nstack.push(temp->m_pLeft);
+		if(temp->m_pRight)
+			nstack.push(temp->m_pRight);
 		
 	}
+	return true;
+}
+void PrintBST(BSTNode* Root)
+{
+	if(Root == NULL)
+		return;
+	cout<<Root->m_nValue<<" ";
+	PrintBST(Root->m_pLeft);
+	PrintBST(Root->m_pRight);
+	
 }
 int main()
 {
@@ -43,7 +73,10 @@ int main()
 	BSTNode p_12 = {6, &leaf1, &leaf2};
 	BSTNode p_34 = {10, &leaf3, &leaf4};
 	BSTNode Root = {8, &p_12, &p_34};
-	if(Mirror_Recur(&Root))
+	cout<<"Before Mirror:" <<endl;
+	PrintBST(&Root);
+	cout<<"After Mirror:" <<endl;
+	if(Mirror_Iter(&Root))
 	{
 		PrintBST(&Root);
 	}
