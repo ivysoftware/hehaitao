@@ -35,12 +35,13 @@ ListNode* FindReverseIndex(ListNode* Head, int k)
 int main()
 {
 	ListNode a[6];
-	for (int i=5; i >= 0; i--)
+	a[5].m_nKey = 5;
+	for (int i=4; i >= 0; i--)
 	{
-		a[i] = {i,i==5?0:&a[i+1]};
+		a[i].m_nKey = i;
+		a[i].m_pNext = &a[i+1];
 	}
-	ListNode b={1,0};
-	ListNode* result = FindReverseIndex(&b, 0);
+	ListNode* result = FindReverseIndex(a, 0);
 	cout<<"result "<<result->m_nKey<<endl;
 	return 0;
 }

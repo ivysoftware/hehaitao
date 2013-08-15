@@ -1,4 +1,4 @@
-/*E11*/
+/*E11 binary tree to doublelink*/
 #include <iostream>
 #include <stack>
 using namespace std;
@@ -75,6 +75,7 @@ int main()
 	BSTNode Root = {8, &p_12, &p_34};
 	cout<<"Before Mirror:" <<endl;
 	PrintBST(&Root);
+	cout<<endl;
 	cout<<"After Mirror:" <<endl;
 	if(Mirror_Iter(&Root))
 	{

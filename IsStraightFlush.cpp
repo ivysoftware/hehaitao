@@ -1,4 +1,4 @@
-/*IsStraightFlush*/
+/*IsStraightFlush ÊÇ·ñÎªË³×Ó*/
 #include <iostream>
 using namespace std;
 bool IsStraightFlush(int* array, unsigned int n){
